@@ -1,5 +1,6 @@
 package com.example.progettino.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -51,11 +52,6 @@ public class OrdineService {
     		s.setPrezzo(serv.getPrezzo());
     		s.setNome(serv.getNome());
     		s.setQuantita(serv.getQuantita());
-    		s.setOrdini(serv.getOrdini()); // TODO check
-    	}
-    	
-    	for(Prodotto s: prodotti) {
-    		costoTotale += s.getPrezzo();
     	}
     	
     	// TODO si potrebbero gestire dataConsegna e dataRitiro...
@@ -66,6 +62,23 @@ public class OrdineService {
     	o.setDataRitiro(ordine.getDataRitiro());
     	o.setCliente(cliente);
     	o.setProdotti(prodotti);
+    	
+    	for(Prodotto s: prodotti) {
+    		costoTotale += s.getPrezzo();
+    		
+    		// controllo la lista ordini "null ?"
+    		
+    		Set<Ordine> ordini = s.getOrdini();
+    		
+    		if(ordini == null) {
+    			ordini = new HashSet<>();
+    		}
+    		
+    		ordini.add(o);
+    		
+    	}
+    	
+    	// il costo totale
     	o.setCostoTotale(costoTotale);
     	
     	// Debug
@@ -102,6 +115,7 @@ public class OrdineService {
         return ordine.map(Ordine::getCliente);
     }
     
+    // TODO da implementare!!!
     public Ordine update(Ordine ordine) {
     	// TODO da fare
     	return ordine;

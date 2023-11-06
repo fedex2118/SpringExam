@@ -43,13 +43,13 @@ public class ProdottoController {
     	return ResponseEntity.ok(prodottoService.save(prodotto));
     }
 
-    // PUT: Modificare un prodotto esistente
+    // PUT: Modificare un prodotto esistente // TODO da implementare nel SERVICE
     @PutMapping
     public ResponseEntity<Prodotto> updateProdotto(@RequestParam Long id, @RequestBody Prodotto prodotto) {
         if (!prodottoService.findById(id).isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        prodotto.setId(id); // Assicurati che l'ID nel corpo corrisponda all'ID nel path
+        prodotto.setId(id); // TODO fare l'aggiornamento dei prodotti
         return ResponseEntity.ok(prodottoService.save(prodotto));
     }
 

@@ -37,7 +37,7 @@ public class Ordine {
     
 	
 	// creiamo una tabella ponte tra ordini e servizi associati!
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToMany
     @JoinTable(
             name = "ordine_prodotto",
             joinColumns = @JoinColumn(name = "ordine_id"),

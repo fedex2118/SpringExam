@@ -21,6 +21,8 @@ import com.example.progettino.service.OrdineService;
 @RequestMapping("/ordine")
 public class OrdineController {
 
+	
+	
 	@Autowired
     private OrdineService ordineService;
 
@@ -44,7 +46,7 @@ public class OrdineController {
     	return ResponseEntity.ok(ordineService.save(ordine, clienteId));
     }
 
-    // PUT: Modificare un ordine esistente
+    // PUT: Modificare un ordine esistente // TODO da implementare nel SERVICE
     @PutMapping
     public ResponseEntity<Ordine> updateOrdine(@RequestParam Long id, @RequestBody Ordine ordine) {
         if (!ordineService.findById(id).isPresent()) {
@@ -55,8 +57,8 @@ public class OrdineController {
     }
 
     // DELETE: Eliminare un ordine
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteOrdine(@PathVariable Long id) {
+    @DeleteMapping
+    public ResponseEntity<Void> deleteOrdine(@RequestParam Long id) {
         ordineService.delete(id);
         return ResponseEntity.ok().build();
     }
