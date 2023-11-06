@@ -16,7 +16,7 @@ public class ProdottoService {
     private ProdottoRepository prodottoRepository;
 
     // Salvare un prodotto // TODO riparti da qui
-    public Prodotto save(Prodotto servizio) {
+    public Prodotto save(Prodotto prodotto) {
     	Prodotto s = new Prodotto();
     	
 //    	System.out.println(servizio.getTempoEsecuzione());
